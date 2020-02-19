@@ -10,7 +10,8 @@ class Search extends Component {
     isChange  = (event) =>{
       this.setState({
         SearchText:event.target.value
-      });  
+      });
+      this.props.isSearch(this.state.SearchText);  
     }
     render() {
         return (

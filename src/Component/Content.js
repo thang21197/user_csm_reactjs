@@ -10,7 +10,8 @@ class Content extends Component {
         this.state={
             isButton: true,
             isForm:true,
-            DataUser:DataUser
+            DataUser:DataUser,
+            SearchDataName:''
         }
     }
 
@@ -22,14 +23,23 @@ class Content extends Component {
        });
     }
     SearchUser  = (user) =>{
-        alert(user);
+       this.setState({
+           SearchDataName:user
+        });
     }
     render() {
+        var SearchUserArray=[];
+        this.state.DataUser.forEach((item) =>{
+           if(item.Name.indexOf(this.state.SearchDataName)!== -1){
+               SearchUserArray.push(item);
+           }
+        })
+        
         return (
     <div className="container">
         <Search isSearch={(user)=>this.SearchUser(user)}/>
         <div className="row">
-          <Table DataUser={this.state.DataUser}/>
+          <Table DataUser={SearchUserArray}/>
       <div className="col col-md-3">
             <Button isClick={(event) =>{this.isClick(event)}} isButton={this.state.isButton}/>
             <Adduser isForm={this.state.isForm} />

@@ -1,0 +1,27 @@
+[
+    {
+      "Name":"John Wick",
+      "Phone":"09884525541",
+      "Level":"Admin"
+    },
+    {
+        "Name":"Babayaga",
+        "Phone":"01215233123",
+        "Level":"Member"
+    },
+    {
+        "Name":"Micheal",
+        "Phone":"098831241",
+        "Level":"Member"
+    },
+    {
+        "Name":"Jason",
+        "Phone":"092323310",
+        "Level":"Member"
+    },
+    {
+        "Name":"Dick",
+        "Phone":"098323333",
+        "Level":"Admin"
+    }
+]

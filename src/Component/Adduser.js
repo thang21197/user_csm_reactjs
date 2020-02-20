@@ -1,6 +1,26 @@
 import React, { Component } from 'react';
 class Adduser extends Component {
+     constructor(props) {
+       super(props);
+       this.state={
+         id:'',
+         fLevel:"0",
+       }
+     }
+     
+    GetNewUser  = (event) =>{
+      const name = event.target.name;
+      const value= event.target.value;
+      this.setState({
+        [name]:value
+      });
+    }
     render() {
+        var newUser=[];
+        newUser.id=this.state.id;
+        newUser.Name=this.state.fName;
+        newUser.Phone=this.state.fPhone;
+        newUser.Level=this.state.fLevel;     
         if(this.props.isForm===true){
             return (
                 <div className="card text-left">
@@ -8,18 +28,18 @@ class Adduser extends Component {
                     <div className="card-body text-center">
                       <h4 className="card-title">Add User</h4>
                       <div className="form-group">
-                        <input type="text" className="form-control"  placeholder="Name" />
+                        <input type="text" className="form-control" name="fName" onChange={(event) =>{this.GetNewUser(event)}} placeholder="Name" />
                       </div>
                       <div className="form-group">
-                        <input type="text" className="form-control" placeholder="Telephone Number" />
+                        <input type="text" className="form-control" name="fPhone" onChange={(event) =>{this.GetNewUser(event)}} placeholder="Telephone Number" />
                       </div>
                       <div className="form-group">
-                        <select className="form-control" >
-                          <option>Admin</option>
-                          <option>Member</option>
+                        <select defaultValue={0} className="form-control" name="fLevel" onChange={(event) =>{this.GetNewUser(event)}} >
+                          <option value={0} >Admin</option>
+                          <option value={1}  >Member</option>
                         </select>
                       </div>
-                      <button type="submit" className="btn btn-primary mx-auto">Add user</button>
+                      <button type="submit" className="btn btn-primary mx-auto" onClick={(user)=>this.props.AddUserSubmit(newUser)}>Add user</button>
                     </div>
                   </div>
                 );

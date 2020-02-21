@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import TabaleRow from './TabaleRow';
 class Table extends Component {
-  showData  = () => {return this.props.DataUser.map((value,key) =>(<TabaleRow isEditUser={this.props.isEditUser} key={key} Uid={value.id} stt={key+1} UName={value.Name} UPhone={value.Phone} ULvl={value.Level}/>))}
+  isDeleteUser   = (idUser) =>{
+      this.props.isDeleteUser(idUser)
+  }
+  showData  = () => {
+    return this.props.DataUser.map((value,key) =>(<TabaleRow isDeleteUser={(idUser)=>this.isDeleteUser(idUser)} isEditUser={this.props.isEditUser} key={key} Uid={value.id} stt={key} UName={value.Name} UPhone={value.Phone} ULvl={value.Level}/>))}
 
-    render() {
+
+    render() {  
         return (
         <div className="col ">
             <table className="table table-striped ">

@@ -11,12 +11,12 @@ class Content extends Component {
             isButton: true,
             isForm:true,
             DataUser:DataUser,
-            SearchDataName:''
+            SearchDataName:'',
         }
     }
 
     isClick  = (event) =>{
-        event.preventDefault();
+       event.preventDefault();
        this.setState({
            isButton: !this.state.isButton,
            isForm: !this.state.isForm
@@ -46,6 +46,12 @@ class Content extends Component {
             }
         })     
     } 
+    isDeleteUser = (idUser) =>{   
+        var temData= this.state.DataUser.filter(item => item.id !== idUser);       
+        this.setState({
+            DataUser:temData
+        });
+    }
     render() {
         var SearchUserArray=[];
         this.state.DataUser.forEach((item) =>{
@@ -53,11 +59,12 @@ class Content extends Component {
                SearchUserArray.push(item);
            }
         });
+        // console.log(this.state.DataUser);
         return (
     <div className="container">
         <Search isSearch={(user)=>this.SearchUser(user)}/>
         <div className="row">
-          <Table isEditUser={(UserEdit)=>this.isEditUser(UserEdit)} DataUser={SearchUserArray}/>
+          <Table isDeleteUser={(idUser) =>{this.isDeleteUser(idUser)}} isEditUser={(UserEdit)=>this.isEditUser(UserEdit)} DataUser={SearchUserArray}/>
       <div className="col col-md-3">
             <Button isClick={(event) =>{this.isClick(event)}} isButton={this.state.isButton}/>
             <Adduser isForm={this.state.isForm} AddUserSubmit={(newUser) =>{this.AddUserSubmit(newUser)}}/>

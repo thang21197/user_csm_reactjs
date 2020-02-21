@@ -22,6 +22,9 @@ class TabaleRow extends Component {
         isShowEditUser: !this.state.isShowEditUser
       });
     } 
+    isDelete = (idUser) =>{
+      this.props.isDeleteUser(idUser);
+    }
     isChangeValue  = (event) => {
       const name= event.target.name;
       const value= event.target.value;
@@ -35,9 +38,9 @@ class TabaleRow extends Component {
         return (
         <tr>
           <td>{this.props.stt}</td>
-          <td><input defaultValue={this.props.UName} name="Name" onChange={(event)=>{this.isChangeValue(event)}} type="text" className="form-control"/></td>
-          <td><input defaultValue={this.props.UPhone} name="Phone" onChange={(event)=>{this.isChangeValue(event)}} type="text" className="form-control"/></td>
-          <td><select defaultValue={this.props.ULvl}  name="Level" onChange={(event)=>{this.isChangeValue(event)}} className="form-control">
+          <td><input defaultValue={this.state.Name} name="Name" onChange={(event)=>{this.isChangeValue(event)}} type="text" className="form-control"/></td>
+          <td><input defaultValue={this.state.Phone} name="Phone" onChange={(event)=>{this.isChangeValue(event)}} type="text" className="form-control"/></td>
+          <td><select defaultValue={this.state.Level}  name="Level" onChange={(event)=>{this.isChangeValue(event)}} className="form-control">
             <option value="Admin">Admin</option>
             <option value="Member">Member</option>
           </select>
@@ -49,15 +52,17 @@ class TabaleRow extends Component {
         </tr> 
         )
       }else{
+        console.log(this.state);
+        
         return(
           <tr>
-                  <td>{this.props.stt}</td>
-                  <td>{this.state.Name}</td>
-                  <td>{this.state.Phone}</td>
-                  <td>{this.state.Level}</td>
+                  <td>{this.props.stt+1}</td>
+                  <td>{this.props.UName}</td>
+                  <td>{this.props.UPhone}</td>
+                  <td>{this.props.ULvl}</td>
                   <td>
-                    <a href="/" onClick={(event) => {this.isClickEdit(event)} } className="btn btn-success mr-2">Edit</a>
-                    <a href="/" className="btn btn-danger">Delete</a>
+                    <div  onClick={(event) => {this.isClickEdit(event)} } className="btn btn-success mr-2">Edit</div >
+                    <div  onClick={(idUser) => {this.isDelete(this.props.Uid)} } className="btn btn-danger">Delete</div >
                   </td>
           </tr> 
         )

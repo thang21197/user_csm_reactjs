@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+const uuidv1 = require('uuid/v1');
 class Adduser extends Component {
      constructor(props) {
        super(props);
@@ -17,7 +18,7 @@ class Adduser extends Component {
     }
     render() {
         var newUser=[];
-        newUser.id=this.state.id;
+        newUser.id=uuidv1();
         newUser.Name=this.state.fName;
         newUser.Phone=this.state.fPhone;
         newUser.Level=this.state.fLevel;     

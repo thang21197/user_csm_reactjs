@@ -52,9 +52,9 @@ class TabaleRow extends Component {
         return(
           <tr>
                   <td>{this.props.stt}</td>
-                  <td>{this.props.UName}</td>
-                  <td>{this.props.UPhone}</td>
-                  <td>{this.props.ULvl}</td>
+                  <td>{this.state.Name}</td>
+                  <td>{this.state.Phone}</td>
+                  <td>{this.state.Level}</td>
                   <td>
                     <a href="/" onClick={(event) => {this.isClickEdit(event)} } className="btn btn-success mr-2">Edit</a>
                     <a href="/" className="btn btn-danger">Delete</a>
